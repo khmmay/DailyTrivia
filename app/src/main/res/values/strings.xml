@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">DailyTrivia</string>
+    <string-array name="questions">
+        <item name="Question1">"The Spanish Civil War began in which year?"</item>
+        <item name="Question2">"In 1893, which country became the first to give women the right to vote?"</item>
+        <item name="Question3">"Which bone is the longest bone in the human body?"</item>
+        <item name="Question4">"Whats the plural of the word „crisis“?"</item>
+        <item name="Question5">"Which athlete has won the most Olympic medals?"</item>
+        <item name="Question6">"What is the capital of North Korea?"</item>
+        <item name="Question7">"What is the second largest country by land mass?"</item>
+        <item name="Question8">"Which country lies on the border between Spain and France?"</item>
+        <item name="Question9">"In the board game Monopoly, if you pay to get out of jail, how much does it cost?"</item>
+        <item name="Question10">"In what country did table tennis originate?"</item>
+    </string-array>
+
+    <string-array name="answers">
+    <item name="answer11">1936</item>
+    <item name="answer12">1916</item>
+    <item name="answer13">1926</item>
+    <item name="answer14">1946</item>
+
+    <item name="answer21">New Zealand</item>
+    <item name="answer22">Australia</item>
+    <item name="answer23">USA</item>
+    <item name="answer24">Germany</item>
+
+    <item name="answer31">Femur</item>
+    <item name="answer32">Tibula</item>
+    <item name="answer33">Scapula</item>
+    <item name="answer34">Sternum</item>
+
+    <item name="answer41">Crises</item>
+    <item name="answer42">Crisis</item>
+    <item name="answer43">Crisises</item>
+    <item name="answer44">Crisisis</item>
+
+    <item name="answer51">Michael Phelps</item>
+    <item name="answer52">Usain Bolt</item>
+    <item name="answer53">Larissa Latynina</item>
+    <item name="answer54">Carl Lewis</item>
+
+    <item name="answer61">Pyongyang</item>
+    <item name="answer62">Addis Abeba</item>
+    <item name="answer63">Seoul</item>
+    <item name="answer64">Phnom Penh</item>
+
+    <item name="answer71">Canada</item>
+    <item name="answer72">USA</item>
+    <item name="answer73">Brasil</item>
+    <item name="answer74">Australia</item>
+
+    <item name="answer81">Andorra</item>
+    <item name="answer82">San Marino</item>
+    <item name="answer83">Vatican</item>
+    <item name="answer84">Luxemburg</item>
+
+    <item name="answer91">$50</item>
+    <item name="answer92">$500</item>
+    <item name="answer93">$20</item>
+    <item name="answer94">$1000</item>
+
+    <item name="answer101">England</item>
+    <item name="answer102">Germany</item>
+    <item name="answer103">China</item>
+    <item name="answer104">France</item>
+    </string-array>
+
+</resources>
