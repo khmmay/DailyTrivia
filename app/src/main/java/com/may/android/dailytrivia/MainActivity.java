@@ -36,8 +36,8 @@ public class MainActivity extends Activity {
     int[] answers;
     Random r = new Random();
     int Points = 0;
-    String s_name="";
-    Boolean namechanged=false;
+    String s_name = "";
+    Boolean namechanged = false;
 
     static int[] addElement(int[] a, int e) {
         if (a == null) {
@@ -69,33 +69,30 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         prepare();
-        EditText bedit=(EditText) findViewById(R.id.name);
+        EditText bedit = (EditText) findViewById(R.id.name);
         bedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetName();
             }
         });
-        Button bresult=(Button) findViewById(R.id.buttonResults);
+        Button bresult = (Button) findViewById(R.id.buttonResults);
         bresult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getresult();
             }
         });
-        Button breset=(Button) findViewById(R.id.buttonRetry);
+        Button breset = (Button) findViewById(R.id.buttonRetry);
         breset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               reset();
+                reset();
             }
         });
-
-
-
     }
 
-    void prepare(){
+    void prepare() {
         int[] questionsSort = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         for (int i = 0; i < 5; i++) {
@@ -151,18 +148,18 @@ public class MainActivity extends Activity {
         }
 
         if (done) {
-            boolean bonus=false;
-            for (int i=1;i<5;i++){
+            boolean bonus = false;
+            for (int i = 1; i < 5; i++) {
                 int cID = this.getResources().getIdentifier("checkBox" + i, "id", this.getPackageName());
-                CheckBox check=(CheckBox) findViewById(cID);
-                if (check.isChecked()){
-                    bonus=true;
+                CheckBox check = (CheckBox) findViewById(cID);
+                if (check.isChecked()) {
+                    bonus = true;
                 }
             }
-            String bonus_s="";
-            if (bonus){
-                Points=Points+10;
-                bonus_s="\nThank you very much for your market feedback.";
+            String bonus_s = "";
+            if (bonus) {
+                Points = Points + 10;
+                bonus_s = "\nThank you very much for your market feedback.";
             }
             for (int i = 1; i < 6; i++) {
                 RadioButton answerButton = useranswers[i - 1];
@@ -175,30 +172,30 @@ public class MainActivity extends Activity {
                     for (int j = 1; j < 5; j++) {
                         int aID = getResources().getIdentifier("answer" + i + j, "id", getPackageName());
                         RadioButton correctAnswer = (RadioButton) findViewById(aID);
-                        if ((int)correctAnswer.getTag()==1){
+                        if ((int) correctAnswer.getTag() == 1) {
                             correctAnswer.setTextColor(getResources().getColor(R.color.right));
                         }
                     }
                 }
             }
             TextView restext = (TextView) findViewById(R.id.endresults);
-            String resstring = "Congratulations " + s_name + ", you scored " + Points + " points."+bonus_s+"\nClick Retry for a new game!";
+            String resstring = "Congratulations " + s_name + ", you scored " + Points + " points." + bonus_s + "\nClick Retry for a new game!";
             restext.setText(resstring);
             LinearLayout resultLayout = (LinearLayout) findViewById(R.id.resultsLayout);
             resultLayout.setVisibility(View.VISIBLE);
 
-            Button getres=(Button) findViewById(R.id.buttonResults);
+            Button getres = (Button) findViewById(R.id.buttonResults);
             getres.setClickable(false);
         }
     }
 
-    void reset(){
-        Points=0;
-        Button getres=(Button) findViewById(R.id.buttonResults);
+    void reset() {
+        Points = 0;
+        Button getres = (Button) findViewById(R.id.buttonResults);
         getres.setClickable(true);
-        namechanged=false;
-        questions=new int[0];
-        answers=new int[0];
+        namechanged = false;
+        questions = new int[0];
+        answers = new int[0];
 
         for (int i = 1; i < 6; i++) {
             int gID = this.getResources().getIdentifier("groupAnswers" + i, "id", this.getPackageName());
@@ -218,14 +215,13 @@ public class MainActivity extends Activity {
 
     }
 
-    void resetName(){
+    void resetName() {
         EditText nameView = (EditText) findViewById(R.id.name);
-        if (!namechanged){
+        if (!namechanged) {
             nameView.setText("");
-            namechanged=true;
+            namechanged = true;
         }
     }
-
 
 
 }
