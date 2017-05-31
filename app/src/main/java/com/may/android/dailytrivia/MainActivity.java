@@ -2,9 +2,7 @@ package com.may.android.dailytrivia;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,29 +14,17 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
-import java.util.StringTokenizer;
-
-import static android.R.attr.checked;
-import static android.R.attr.duration;
-import static android.R.attr.id;
-import static android.R.attr.name;
-import static android.R.attr.visibility;
-import static android.R.attr.x;
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends Activity {
 
     int[] questions;
     int[] answers;
     Random r = new Random();
-    int Points = 0;
-    String s_name = "";
-    Boolean namechanged = false;
+    int points = 0;
+    String name = "";
+    Boolean nameChanged = false;
 
     static int[] addElement(int[] a, int e) {
         if (a == null) {
@@ -129,7 +115,12 @@ public class MainActivity extends Activity {
 
     void getresult() {
         EditText nameView = (EditText) findViewById(R.id.name);
-        s_name = nameView.getText().toString();
+        name = nameView.getText().toString();
+        if (name.equals("Cheatword")){
+            //Cheat adds 20 points extra
+            points=points+20;
+        }
+
         RadioButton[] useranswers = new RadioButton[5];
         boolean done = true;
         for (int i = 1; i < 6; i++) {
@@ -149,24 +140,24 @@ public class MainActivity extends Activity {
         }
 
         if (done) {
-            boolean bonus = false;
+            boolean[] checked = new boolean[4];
             for (int i = 1; i < 5; i++) {
                 int cID = this.getResources().getIdentifier("checkBox" + i, "id", this.getPackageName());
                 CheckBox check = (CheckBox) findViewById(cID);
                 if (check.isChecked()) {
-                    bonus = true;
+                    checked[i-1]=true;
                 }
             }
             String bonus_s = "";
-            if (bonus) {
-                Points = Points + 10;
-                bonus_s = "\nThank you very much for your market feedback.";
+            if (!(checked[0])&&checked[1]&&checked[2]&&checked[3]) {
+                points = points + 10;
+                bonus_s = "\nGood, nobody likes facebook. Have a bonus!";
             }
             for (int i = 1; i < 6; i++) {
                 RadioButton answerButton = useranswers[i - 1];
                 int userAnswer = (int) answerButton.getTag();
                 if (userAnswer == 1) {
-                    Points = Points + 10;
+                    points = points + 10;
                     answerButton.setTextColor(ContextCompat.getColor(this, R.color.right));
                 } else {
                     answerButton.setTextColor(getResources().getColor(R.color.wrong));
@@ -180,7 +171,7 @@ public class MainActivity extends Activity {
                 }
             }
             TextView restext = (TextView) findViewById(R.id.endresults);
-            String resstring = "Congratulations " + s_name + ", you scored " + Points + " points." + bonus_s + "\nClick Retry for a new game!";
+            String resstring = "Congratulations " + name + ", you scored " + points + " points." + bonus_s + "\nClick Retry for a new game!";
             restext.setText(resstring);
 
             Toast toastDone = Toast.makeText(getApplicationContext(), resstring, Toast.LENGTH_LONG);
@@ -195,10 +186,10 @@ public class MainActivity extends Activity {
     }
 
     void reset() {
-        Points = 0;
+        points = 0;
         Button getres = (Button) findViewById(R.id.buttonResults);
         getres.setClickable(true);
-        namechanged = false;
+        nameChanged = false;
         questions = new int[0];
         answers = new int[0];
 
@@ -222,9 +213,9 @@ public class MainActivity extends Activity {
 
     void resetName() {
         EditText nameView = (EditText) findViewById(R.id.name);
-        if (!namechanged) {
+        if (!nameChanged) {
             nameView.setText("");
-            namechanged = true;
+            nameChanged = true;
         }
     }
 
