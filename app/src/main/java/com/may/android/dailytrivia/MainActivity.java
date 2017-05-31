@@ -23,6 +23,7 @@ import java.util.Random;
 import java.util.StringTokenizer;
 
 import static android.R.attr.checked;
+import static android.R.attr.duration;
 import static android.R.attr.id;
 import static android.R.attr.name;
 import static android.R.attr.visibility;
@@ -181,6 +182,10 @@ public class MainActivity extends Activity {
             TextView restext = (TextView) findViewById(R.id.endresults);
             String resstring = "Congratulations " + s_name + ", you scored " + Points + " points." + bonus_s + "\nClick Retry for a new game!";
             restext.setText(resstring);
+
+            Toast toastDone = Toast.makeText(getApplicationContext(), resstring, Toast.LENGTH_LONG);
+            toastDone.show();
+
             LinearLayout resultLayout = (LinearLayout) findViewById(R.id.resultsLayout);
             resultLayout.setVisibility(View.VISIBLE);
 
